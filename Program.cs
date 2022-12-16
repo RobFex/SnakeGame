@@ -17,8 +17,6 @@ namespace Snake
 
         private const int FrameMs = 200;
 
-        private static int bestScore = 0;
-
         private static readonly Random random = new Random();
         static void Main()
         {
@@ -84,12 +82,6 @@ namespace Snake
             Console.WriteLine("Game Over");
             Console.SetCursorPosition(ScreenWidth / 5 * 2 + 5, ScreenHeight / 5 * 2 + 6);
             Console.WriteLine("Scores: {0}", score);
-            if (score > bestScore)
-            {
-                bestScore = score;
-            }
-            Console.SetCursorPosition(ScreenWidth / 5 * 2 + 5, ScreenHeight / 5 * 2 + 7);
-            Console.WriteLine("Best score: {0}", bestScore);
             Task.Run(() => Console.Beep(200, 600));
         }
         static Pixel GenFood(Snake snake)
@@ -137,7 +129,9 @@ namespace Snake
             {
                 Pixel pxOne = new Pixel(x, 0, Border);
                 pxOne.Draw();
+                Thread.Sleep(20);
                 Pixel pxTwo = new Pixel(x, MapHeight - 1, Border);
+                Thread.Sleep(20);
                 pxTwo.Draw();
             }
 
@@ -145,7 +139,9 @@ namespace Snake
             {
                 Pixel pxOne = new Pixel(0, y, Border);
                 pxOne.Draw();
+                Thread.Sleep(20);
                 Pixel pxTwo = new Pixel(MapWidth - 1, y, Border);
+                Thread.Sleep(20);
                 pxTwo.Draw();
             }
         }
